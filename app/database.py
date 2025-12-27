@@ -12,7 +12,11 @@ SQLALCHEMY_DATABASE_URL = (
 
 # SQLALCHEMY_DATABASE_URL = 'postgresql://arjunragu:@localhost/fastapi'
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL,
+    connect_args={"sslmode": "require"}
+)
+
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
